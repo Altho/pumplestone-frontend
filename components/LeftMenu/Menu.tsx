@@ -16,6 +16,7 @@ import {
 const useStyles = createStyles((theme) => ({
   wrapper: {
     display: 'flex',
+    gridArea: '2 / 1 / 3 / 2',
   },
 
   aside: {

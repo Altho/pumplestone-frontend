@@ -2,6 +2,7 @@ import { InferGetServerSidePropsType } from 'next';
 import { ColorSchemeToggle } from '../components/ColorSchemeToggle/ColorSchemeToggle';
 import { Menu } from '../components/LeftMenu/Menu';
 import Wrapper from "../components/Layout/Wrapper";
+import Header from "../components/Layout/Header";
 
 interface ArticleType {
   id: number,
@@ -25,7 +26,8 @@ export default function HomePage({ articles }: InferGetServerSidePropsType<typeo
   return (
     <>
       <Wrapper>
-      <Menu />
+        <Header />
+        <Menu />
       <div>hello</div>
       {/* eslint-disable-next-line max-len */}
       {articles.map((article: ArticleType) => (

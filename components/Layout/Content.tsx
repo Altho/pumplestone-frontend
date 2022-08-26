@@ -7,17 +7,17 @@ interface Props {
 }
 
 const useStyles = createStyles(() => ({
-  wrapper: {
+  content: {
     display: 'grid',
     gridTemplateColumns: '25% 1fr',
     gridTemplateRows: '100px 1fr',
   },
 }));
 
-export default function Wrapper({ children }: Props) {
+export default function Content({ children }: Props) {
   const { classes } = useStyles();
 
   return (
-    <div className={classes.wrapper}>{children}</div>
+    <div className={classes.content}>{children}</div>
   );
 }
