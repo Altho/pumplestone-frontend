@@ -128,16 +128,16 @@ const mainLinksMockdata = [
 ];
 
 const linksMockdata = [
-  'Accueil',
-  'Nouvel Article',
-  'Catégoris',
-  'Brouillons',
+  { name: 'Accueil', link: '/blog/accueil' },
+  { name: 'Nouvel Article', link: '/' },
+  { name: 'Catégories', link: '/' },
+  { name: 'Brouillons', link: '/' },
 ];
 
 export function Menu() {
   const { classes, cx } = useStyles();
   const [active, setActive] = useState('Releases');
-  const [activeLink, setActiveLink] = useState('Settings');
+  const [activeLink, setActiveLink] = useState('Accueil');
 
   const mainLinks = mainLinksMockdata.map((link) => (
     <Tooltip label={link.label} position="right" withArrow transitionDuration={0} key={link.label}>
@@ -152,15 +152,15 @@ export function Menu() {
 
   const links = linksMockdata.map((link) => (
     <a
-      className={cx(classes.link, { [classes.linkActive]: activeLink === link })}
-      href="/"
+      className={cx(classes.link, { [classes.linkActive]: activeLink === link.name })}
+      href={link.link}
       onClick={(event) => {
-        event.preventDefault();
-        setActiveLink(link);
+        // event.preventDefault();
+        setActiveLink(link.name);
       }}
-      key={link}
+      key={link.name}
     >
-      {link}
+      {link.name}
     </a>
   ));
 
