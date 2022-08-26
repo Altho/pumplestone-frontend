@@ -1,18 +1,10 @@
 import { InferGetServerSidePropsType } from 'next';
 import { Menu } from '../../components/LeftMenu/Menu';
-import Wrapper from "../../components/Layout/Wrapper";
-import Header from "../../components/Layout/Header";
-import Content from "../../components/Layout/Content";
-
-interface ArticleType {
-  id: number,
-  title: string,
-  description: string,
-  body: string,
-  pubished: boolean,
-  createdAt: Date,
-  updatedAt: Date,
-}
+import Wrapper from '../../components/Layout/Wrapper';
+import Header from '../../components/Layout/Header';
+import Content from '../../components/Layout/Content';
+import { ArticleType } from '../../types/article.type';
+import BlogTable from "../../components/Blog/BlogTable";
 
 export const getServerSideProps = async () => {
   const article = await fetch('http://localhost:3001/articles');
@@ -30,10 +22,7 @@ export default function HomePage({ articles }: InferGetServerSidePropsType<typeo
         <Menu />
         <Content>
           <div>hello</div>
-           eslint-disable-next-line max-len
-          {articles.map((article: ArticleType) => (
-              <div className="test">{article.title}</div>
-            ))}
+           <BlogTable article={articles} />
         </Content>
       </Wrapper>
     </>
