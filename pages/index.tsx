@@ -3,6 +3,7 @@ import { ColorSchemeToggle } from '../components/ColorSchemeToggle/ColorSchemeTo
 import { Menu } from '../components/LeftMenu/Menu';
 import Wrapper from "../components/Layout/Wrapper";
 import Header from "../components/Layout/Header";
+import Content from "../components/Layout/Content";
 
 interface ArticleType {
   id: number,
@@ -28,12 +29,13 @@ export default function HomePage({ articles }: InferGetServerSidePropsType<typeo
       <Wrapper>
         <Header />
         <Menu />
+        <Content>
       <div>hello</div>
       {/* eslint-disable-next-line max-len */}
-      {articles.map((article: ArticleType) => (
-          <div className="test">{article.title}</div>
-        ))}
-      <ColorSchemeToggle />
+      {/*{articles.map((article: ArticleType) => (*/}
+      {/*    <div className="test">{article.title}</div>*/}
+      {/*  ))}*/}
+        </Content>
       </Wrapper>
     </>
   );

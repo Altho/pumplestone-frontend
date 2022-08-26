@@ -128,17 +128,10 @@ const mainLinksMockdata = [
 ];
 
 const linksMockdata = [
-  'Security',
-  'Settings',
-  'Dashboard',
-  'Releases',
-  'Account',
-  'Orders',
-  'Clients',
-  'Databases',
-  'Pull Requests',
-  'Open Issues',
-  'Wiki pages',
+  'Accueil',
+  'Nouvel Article',
+  'Catégoris',
+  'Brouillons',
 ];
 
 export function Menu() {

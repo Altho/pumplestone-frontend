@@ -8,9 +8,7 @@ interface Props {
 
 const useStyles = createStyles(() => ({
   content: {
-    display: 'grid',
-    gridTemplateColumns: '25% 1fr',
-    gridTemplateRows: '100px 1fr',
+    gridArea: '2 / 2 / 3 / 3',
   },
 }));
 
