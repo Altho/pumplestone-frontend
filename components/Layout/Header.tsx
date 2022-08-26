@@ -25,7 +25,7 @@ export default function Header() {
     <div className={classes.main}>
       <div className={classes.imageContainer}>
         <Image
-          src="./images/logo.png"
+          src="../images/logo.png"
           height={50}
           width={300}
         />
