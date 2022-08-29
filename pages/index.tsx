@@ -4,6 +4,8 @@ import { Menu } from '../components/LeftMenu/Menu';
 import Wrapper from "../components/Layout/Wrapper";
 import Header from "../components/Layout/Header";
 import Content from "../components/Layout/Content";
+import { useQuery } from "react-query";
+import { fetchAllPosts } from "../libs/fetchBlogPosts";
 
 interface ArticleType {
   id: number,
@@ -15,15 +17,10 @@ interface ArticleType {
   updatedAt: Date,
 }
 
-export const getServerSideProps = async () => {
-  const article = await fetch('http://localhost:3001/articles');
-  const articles = await article.json();
-  console.log(articles);
-  return { props: { articles } };
-};
+
 
 // eslint-disable-next-line max-len
-export default function HomePage({ articles }: InferGetServerSidePropsType<typeof getServerSideProps>) {
+export default function HomePage() {
   return (
     <>
       <Wrapper>
@@ -31,10 +28,6 @@ export default function HomePage({ articles }: InferGetServerSidePropsType<typeo
         <Menu />
         <Content>
       <div>hello</div>
-      {/* eslint-disable-next-line max-len */}
-      {/*{articles.map((article: ArticleType) => (*/}
-      {/*    <div className="test">{article.title}</div>*/}
-      {/*  ))}*/}
         </Content>
       </Wrapper>
     </>

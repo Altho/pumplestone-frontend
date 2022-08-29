@@ -1,11 +1,11 @@
-import { GetServerSidePropsContext } from 'next';
-import { useState } from 'react';
-import { AppProps } from 'next/app';
-import { getCookie, setCookie } from 'cookies-next';
-import Head from 'next/head';
-import { MantineProvider, ColorScheme, ColorSchemeProvider } from '@mantine/core';
-import { NotificationsProvider } from '@mantine/notifications';
-import { QueryClient, QueryClientProvider } from 'react-query';
+import { GetServerSidePropsContext } from "next";
+import { useState } from "react";
+import { AppProps } from "next/app";
+import { getCookie, setCookie } from "cookies-next";
+import Head from "next/head";
+import { MantineProvider, ColorScheme, ColorSchemeProvider } from "@mantine/core";
+import { NotificationsProvider } from "@mantine/notifications";
+import { QueryClient, QueryClientProvider, Hydrate } from "react-query";
 
 const queryClient = new QueryClient();
 
@@ -14,9 +14,9 @@ export default function App(props: AppProps & { colorScheme: ColorScheme }) {
   const [colorScheme, setColorScheme] = useState<ColorScheme>(props.colorScheme);
 
   const toggleColorScheme = (value?: ColorScheme) => {
-    const nextColorScheme = value || (colorScheme === 'dark' ? 'light' : 'dark');
+    const nextColorScheme = value || (colorScheme === "dark" ? "light" : "dark");
     setColorScheme(nextColorScheme);
-    setCookie('mantine-color-scheme', nextColorScheme, { maxAge: 60 * 60 * 24 * 30 });
+    setCookie("mantine-color-scheme", nextColorScheme, { maxAge: 60 * 60 * 24 * 30 });
   };
 
   return (
@@ -31,7 +31,9 @@ export default function App(props: AppProps & { colorScheme: ColorScheme }) {
         <MantineProvider theme={{ colorScheme }} withGlobalStyles withNormalizeCSS>
           <NotificationsProvider>
             <QueryClientProvider client={queryClient}>
-            <Component {...pageProps} />
+              <Hydrate state={pageProps.dehydratedState}>
+                <Component {...pageProps} />
+              </Hydrate>
             </QueryClientProvider>
           </NotificationsProvider>
         </MantineProvider>
