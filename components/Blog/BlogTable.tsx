@@ -1,7 +1,16 @@
-import { Table } from '@mantine/core';
+import { createStyles, Table } from "@mantine/core";
+import { format } from 'date-fns';
 import { ArticleType } from '../../types/article.type';
+import StatusBadge from "./StatusBadge";
+
+const useStyles = createStyles(() => ({
+  line: {
+    cursor: 'pointer',
+  },
+}));
 
 export default function BlogTable({article}) {
+
   const ths = (
     <tr>
       <th>id</th>
@@ -12,14 +21,23 @@ export default function BlogTable({article}) {
     </tr>
   );
 
-  const rows = article.map((element: ArticleType) => (
-    <tr key={element.id}>
+  const rows = article.map((element: ArticleType) => {
+    const { classes } = useStyles();
+    const date = format(new Date(element.createdAt), 'MM/dd/yyyy');
+
+    return (
+
+    <tr key={element.id} className={classes.line}>
       <td>{element.id}</td>
-      <td>{`${element.title.slice(0, 20)}...`}</td>
-      <td>{`${element.description.slice(0, 20)}...`}</td>
-      <td>{element.published ? ('Publié') : ('Brouillon')}</td>
+      <td>{element.title}</td>
+      <td>{element.description}</td>
+      <td><StatusBadge status={element.published ? 'published' : 'brouillon'} /></td>
+      <td>{date}</td>
+
     </tr>
-  ));
+
+    );
+  });
 
   return (
     <Table captionSide="bottom" striped highlightOnHover>

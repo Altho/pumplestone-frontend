@@ -12,11 +12,14 @@ import {
   IconBuildingStore,
   IconArticle,
 } from '@tabler/icons';
+import { ColorSchemeToggle } from "../ColorSchemeToggle/ColorSchemeToggle";
 
 const useStyles = createStyles((theme) => ({
   wrapper: {
+    width: 300,
     display: 'flex',
     gridArea: '2 / 1 / 3 / 2',
+    position: 'fixed',
   },
 
   aside: {
@@ -34,6 +37,7 @@ const useStyles = createStyles((theme) => ({
     flex: 1,
     backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[6] : theme.colors.gray[0],
     height: '100vh',
+    // position: 'fixed',
   },
 
   mainLink: {
@@ -129,7 +133,7 @@ const mainLinksMockdata = [
 
 const linksMockdata = [
   { name: 'Accueil', link: '/blog/accueil' },
-  { name: 'Nouvel Article', link: '/' },
+  { name: 'Nouvel Article', link: '/blog/create' },
   { name: 'Catégories', link: '/' },
   { name: 'Brouillons', link: '/' },
 ];
@@ -170,6 +174,7 @@ export function Menu() {
         <div className={classes.aside}>
           <div className={classes.logo} />
           {mainLinks}
+          <ColorSchemeToggle />
         </div>
         <div className={classes.main}>
           <Title order={4} className={classes.title}>
