@@ -9,6 +9,11 @@ interface Props {
 const useStyles = createStyles(() => ({
   content: {
     gridArea: '2 / 2 / 3 / 3',
+    padding: '20px',
+    maxHeight: '100vh',
+    overflowY: 'scroll',
+    // display: 'flex',
+    // justifyContent: 'center',
   },
 }));
 
