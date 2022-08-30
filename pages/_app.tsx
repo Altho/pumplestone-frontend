@@ -1,11 +1,11 @@
 import { GetServerSidePropsContext } from "next";
-import { useState } from "react";
+import React, { useState } from "react";
 import { AppProps } from "next/app";
 import { getCookie, setCookie } from "cookies-next";
 import Head from "next/head";
-import { MantineProvider, ColorScheme, ColorSchemeProvider } from "@mantine/core";
-import { NotificationsProvider } from "@mantine/notifications";
-import { QueryClient, QueryClientProvider, Hydrate } from "react-query";
+import { MantineProvider, ColorScheme, ColorSchemeProvider } from '@mantine/core';
+import { NotificationsProvider } from '@mantine/notifications';
+import { QueryClient, QueryClientProvider, Hydrate } from '@tanstack/react-query';
 
 const queryClient = new QueryClient();
 

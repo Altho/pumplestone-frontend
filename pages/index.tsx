@@ -6,6 +6,7 @@ import Header from "../components/Layout/Header";
 import Content from "../components/Layout/Content";
 import { useQuery } from "react-query";
 import { fetchAllPosts } from "../libs/fetchBlogPosts";
+import { dehydrate, QueryClient } from "@tanstack/react-query";
 
 interface ArticleType {
   id: number,
@@ -17,7 +18,15 @@ interface ArticleType {
   updatedAt: Date,
 }
 
-
+export const getServerSideProps = async () => {
+  const queryClient = new QueryClient();
+  // await queryClient.prefetchQuery(['posts'], fetchAllPosts);
+  return {
+    props: {
+      dehydratedState: dehydrate(queryClient),
+    },
+  };
+};
 
 // eslint-disable-next-line max-len
 export default function HomePage() {
