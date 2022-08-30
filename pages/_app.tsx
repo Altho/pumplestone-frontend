@@ -6,6 +6,7 @@ import Head from "next/head";
 import { MantineProvider, ColorScheme, ColorSchemeProvider } from '@mantine/core';
 import { NotificationsProvider } from '@mantine/notifications';
 import { QueryClient, QueryClientProvider, Hydrate } from '@tanstack/react-query';
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 const queryClient = new QueryClient();
 
@@ -34,6 +35,7 @@ export default function App(props: AppProps & { colorScheme: ColorScheme }) {
               <Hydrate state={pageProps.dehydratedState}>
                 <Component {...pageProps} />
               </Hydrate>
+              <ReactQueryDevtools />
             </QueryClientProvider>
           </NotificationsProvider>
         </MantineProvider>
